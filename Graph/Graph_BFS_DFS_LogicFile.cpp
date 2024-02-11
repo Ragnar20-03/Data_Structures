@@ -37,12 +37,12 @@ void Dfs(int startNode , vector <int > adjList[ ] , int visited [] , vector <int
     dfsTraversal.push_back(startNode) ; 
 
 // Check for all its neighbours to go in depth ;
-    for (auto it : adjList)
+    for (auto it : adjList[startNode])
     {
         // check weather neigbour node is already visited or not ? if it is visited then do nothing : else marked it as visited and go in depth for current node neighbour
         if (visited[it] != 1) 
         {
-            Dfs(it , adjList , visit , dfsTraversal);
+            Dfs(it , adjList , visited , dfsTraversal);
         }
     }
 }
