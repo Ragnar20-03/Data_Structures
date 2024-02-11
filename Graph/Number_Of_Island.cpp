@@ -4,18 +4,6 @@
 
 using namespace std  ; 
 
-void traverseNeighbours_eight_Direction(int arr[4][4] , int row , int col)
-{
-    for (int deltaRow = -1 ; deltaRow <= 1 ; deltaRow ++)
-    {
-        for (int deltaCol = -1 ; deltaCol <= 1 ; deltaCol++ )
-        {
-            int newRow = row + deltaRow ; 
-            int newCol = col + deltaCol ; 
-        }
-    }
-}
-
 void Bfs(int startRow , int startCol , int visited[4][4] , int arr[4][4])
 {
     queue<pair<int, int> >  q ; 
@@ -74,6 +62,6 @@ int main()
             }
         }
     }
-    cout<<iCnt;
+
     return 0 ;
 }
