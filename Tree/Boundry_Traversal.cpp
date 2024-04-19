@@ -49,7 +49,7 @@ vector<int> traverseBoundary(TreeNode<int> *root) {
     // Pop elements from the stack and push them into the result vector
     for (int i = temp.size() -1 ; i >= 0 ; i-- )
     {
-        ans.push_back(temp[i]);
+        ans.push_back(temp[i]) ;
     }
     return ans;
 }
