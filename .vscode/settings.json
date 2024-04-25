@@ -10,7 +10,8 @@
         "bitset": "cpp",
         "initializer_list": "cpp",
         "string_view": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "iostream": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
