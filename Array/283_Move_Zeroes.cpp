@@ -1,3 +1,9 @@
+#include<iostream>
+#include <vector>
+#include <set>
+#include <map>
+using namespace std;
+
 // 1st Approach 
 class Solution {
 public:
