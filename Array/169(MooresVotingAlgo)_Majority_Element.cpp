@@ -17,6 +17,10 @@ using namespace std;
     /*
         use hashmap to store the no of occurences of numbers ;
     */
+
+// Brute Force : use 2 loops O ( n2 );
+
+// Better -> 
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
@@ -31,4 +35,36 @@ public:
         }
         return -1  ; 
     }
+};
+
+// Optimal 
+
+
+//MOORES VOTING ALGORITHM 
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int ele = 0 ; 
+        int cnt = 0 ; 
+        for (int i = 0 ; i < nums.size() ; i++ )
+        {
+            if (cnt == 0 )
+            {
+                ele = nums[i];
+                cnt =1 ;
+            }
+            else if (nums[i] == ele)
+            {
+                cnt ++ ; 
+            }
+            else 
+            {
+                cnt -- ; 
+            }
+        }
+        return ele ; 
+    }
+
+    //can also verify is it so or not ; 
 };
