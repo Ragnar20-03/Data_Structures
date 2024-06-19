@@ -13,51 +13,51 @@ using namespace std;
 
 /*
   Algorithm : 
-    first find the break point : 
+    first find the break point : (initiallize it to -1 )
       eg = from last of array find first index i.e ( arr[i] < arr[i+1]) 
       this is the index from which we have to make changes in order to find next permutation 
     
-    find next smallest element from that breakpoint index to last of array and swap them in order to find next permutation 
+    find next smallest  greater element to breakpoint from  that breakpoint index to last of array and swap them in order to find next permutation 
 
     reverse the array form breakpoint index + 1 to n-1 ;
 
     this will give us the next minium permutation 
 */
 
-class Solution {
-public:
-    void nextPermutation(vector<int>& nums) {
-        int n = nums.size() ; 
-        int ind = -1 ; 
-        for (int i = n-2 ; i>= 0 ; i-- )
-        {
-            if (nums[i] < nums[i+1])
-            {
-                ind = i ; 
-                break ; 
-            }
-        }
-        if (ind == -1 )
-        {
-            reverse ( nums.begin() , nums.end() ) ; 
-            return ; 
-        }
+vector<int> nextGreaterPermutation(vector<int> &a) {
+    // Write your code here.
+    int n = a.size() ; 
+    int breakPointIndex = -1 ; 
 
-        for ( int i = n-1 ; i > ind ; i--)
+// Find Break Point ; 
+    for (int i = n -2 ; i >= 0 ; i-- ) 
+    {
+        if (a[i] < a[i+1])
         {
-            if (nums[ind] < nums[i])
-            {
-                swap ( nums[i] , nums[ind]);
-                break ; 
-            }
+            breakPointIndex = i ; 
+            break ; 
         }
-        reverse( nums.begin() + ind + 1 , nums.end());
     }
-};
+    // if index == -1 then no breakpoint the next permutation is smallest number hence reverse array 
+    if ( breakPointIndex == -1 )
+    {
+        reverse( a.begin () , a.end() );
+        return a ; 
+    }
 
-int main () 
-{
+//ELSE find the smallest greater element from breakpoint index + 1 to n-1 ; 
 
+    for (int i = n-1 ; i > breakPointIndex ; i--)
+    {
+        if ( a[i] > a[breakPointIndex])
+        {
+            swap ( a[i] , a[breakPointIndex]);
+            break;
+        }
+    }
 
-  return 0;
+// reverse the array from breakPointIndex + 1 to n-1 
+    reverse(a.begin() + breakPointIndex + 1 , a.end() );
+    return a ; 
+
 }
