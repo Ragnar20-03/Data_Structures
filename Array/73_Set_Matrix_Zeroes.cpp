@@ -69,6 +69,57 @@ public:
     }
 };
 
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+// BETTER Approach
+ /*
+    ALGORITHM  : 
+      1st : initialize the rowTrack and ColTrack array of size n and m respectively and set both to zero ; 
+
+      2 :  iterate for whole matrix and if matrix[i][j]== 0 then mark that row and coloum 1 in the row Track and colTrack array ; 
+
+      3 : 
+        Re Iterate the array , and check if that corrosponding row ( i ) or coloumn ( j )is marked as one ( ~ means on that row or coloumn zero is found) ; and marked them as 0 ; 
+ */
+
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        int n = matrix.size() ; 
+        int m = matrix[0].size() ; 
+
+        vector<int > rowTrack ( n , 0 );
+        vector<int > colTrack ( m , 0 );
+
+        for (int i = 0 ; i < n ; i++ )
+        {
+            for (int j = 0 ; j < m ; j++ )
+            {
+                if (matrix[i][j] == 0 )
+                {
+                    rowTrack[i] = 1 ; 
+                    colTrack[j] = 1 ; 
+                }
+            }
+        }
+
+        for (int i = 0 ; i < n ; i++)
+        {
+            for (int j = 0 ; j < m ; j++ )
+            {
+                if (rowTrack[i] == 1 || colTrack[j] == 1) 
+                {
+                    matrix[i][j] = 0 ; 
+                }
+            }
+        }
+    }
+};
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
 int main () 
 {
 
