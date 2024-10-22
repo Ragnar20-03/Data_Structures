@@ -79,3 +79,8 @@ int main(){
 }
 
 // } Driver Code Ends
+
+
+// 2nd Approach " 
+//  by just applying single logic that no consecutive one must have same 1 
+// we can remove the checkConsecutive function and reduce timecomplexxity also 
