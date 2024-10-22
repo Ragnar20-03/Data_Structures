@@ -84,3 +84,80 @@ int main(){
 // 2nd Approach " 
 //  by just applying single logic that no consecutive one must have same 1 
 // we can remove the checkConsecutive function and reduce timecomplexxity also 
+
+//{ Driver Code Starts
+//Initial Template for C++
+#include<bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+//User function Template for C++
+
+class Solution{
+public:
+    // bool checkConsecutive (string &temp  )
+    // {
+    //     int i = 1 ;
+    //     int j = i -1 ; 
+    //     for (i = 1 ; i < temp.size() ; i++ )
+    //     {
+    //         if ( temp[i] == temp[j]  && (temp[i] == '1' || temp[j] == '1' ))
+    //         {
+    //             return true;
+    //         }
+    //         j++;
+    //     }
+    //     return false ; 
+    // }
+    void generateSubString ( int i , int n , vector<string > & ans , 
+    string temp )
+    {
+        if (i >= n )
+        {
+                ans.push_back(temp);
+            return ; 
+        }
+        
+        temp.push_back('0');
+
+        generateSubString(i+1 , n , ans , temp);
+        
+        temp.pop_back();
+        if (temp.back() == '1' )
+        {
+            return ;
+        }
+        temp.push_back('1');
+        generateSubString(i +1  , n , ans , temp );
+    }
+    vector<string> generateBinaryStrings(int num){
+        //Write your code
+        vector < string > ans ; 
+        string temp ="" ;
+        generateSubString( 0 , num , ans , temp);
+        return ans ; 
+    }
+};
+
+//{ Driver Code Starts.
+int main(){
+    int t = 1;
+    cin >> t;
+
+
+    while(t--){
+        //Input
+        int n; cin >> n;
+
+        Solution obj;
+        
+        vector<string> v = obj.generateBinaryStrings(n);
+        for(auto it:v) cout<<it<<" ";
+        cout << endl;
+    }
+
+    return 0;
+}
+
+// } Driver Code Ends
