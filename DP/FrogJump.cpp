@@ -99,16 +99,18 @@ int helper ( int i , vector<int > & height , vector<int > & dp )
 
 
     // 4 :  Optmiazation After Tabulation : for extra o(n) space of dp array []
-
-     int minimumEnergy(vector<int>& height, int n) {
+        int minimumEnergy(vector<int>& height, int n) {
         // Code here
         int prev = 0 ; 
         int prev2 = 0 ; 
         for (int i = 1 ; i < n ; i++ )
         {
-            int fs = prev + abs ( height [ i ] - height [ prev]);
+            int fs = prev + abs ( height [ i ] - height [ i-1 ]);
             int ss = INT_MAX ; 
-            ss = prev2 + abs ( height [ i ]-height[prev2]);
+            if ( i > 1 )
+            {
+                ss = prev2 + abs ( height [ i ]-height[i-2]);
+            }
             int curri = min ( fs , ss);
             prev2 = prev ; 
             prev = curri ; 
